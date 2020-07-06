@@ -5,6 +5,10 @@ The format is based on [Keep a Changelog], and this project adheres to [Semantic
 
 Also, dates in this file are in [Holocene Calendar] because it is amazing, logical and I want more people to know about it.
 
+## [1.1.1] - 12020-07-06
+### Fixed
+ - Release 1.1.0 was borked - it had a bug that caused the addon to simply not work at all
+
 ## [1.1.0] - 12020-07-06
 ### Added
  - Support for Twitch VOD's

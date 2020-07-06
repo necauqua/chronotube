@@ -8,14 +8,15 @@ async function main() {
         console.error('No video tags found on the page');
         return;
     }
-    const {offset = -1, styles = {}} = await browser.storage.sync.get(['offset', 'styles']);
+    const {offset, styles = {}} = await browser.storage.sync.get(['offset', 'styles']);
+    const offsetInt = parseInt(offset) || -1;
     const formatter = formatters[hostInfo.types[styles[location.host] || 0]].fn;
     const param = hostInfo.param || 't';
 
     const pattern = new RegExp(`([&?])${param}=${parameterRegex}|$`);
     let prev;
     video.addEventListener('timeupdate', () => {
-        const seconds = Math.round(video.currentTime) + offset;
+        const seconds = Math.round(video.currentTime) + offsetInt;
         if (!(seconds !== prev && seconds > 0)) {
             return;
         }
