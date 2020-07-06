@@ -1,0 +1,67 @@
+{
+  "name": "chronotube",
+  "version": "1.1.0",
+  "private": true,
+  "description": "Automatically updates current YouTube or Twitch VOD URL with the timecode of the playing video",
+  "author": "Anton \"necauqua\" Bulakh",
+  "license": "MIT",
+  "homepage": "https://github.com/necauqua/chronotube#readme",
+  "keywords": [
+    "firefox",
+    "web-extension",
+    "youtube",
+    "twitch",
+    "video",
+    "timecode",
+    "url",
+    "sync",
+    "autoupdate"
+  ],
+  "bugs": {
+    "url": "https://github.com/necauqua/chronotube/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/necauqua/chronotube.git"
+  },
+  "scripts": {
+    "start": "node build.mjs run",
+    "build": "node build.mjs"
+  },
+  "dependencies": {
+    "web-ext": "^4.3.0",
+    "web-ext-types": "^3.2.1"
+  },
+  "web-ext-manifest": {
+    "manifest_version": 2,
+    "name": "Chronotube",
+    "icons": {
+      "24": "src/icon.svg",
+      "48": "src/icon.svg",
+      "96": "src/icon.svg",
+      "192": "src/icon.svg",
+      "384": "src/icon.svg"
+    },
+    "options_ui": {
+      "page": "src/options.html",
+      "browser_style": true,
+      "chrome_style": true
+    },
+    "permissions": [
+      "<all_urls>",
+      "storage",
+      "history"
+    ],
+    "background": {
+      "scripts": [
+        "src/platforms.js",
+        "src/background.js"
+      ]
+    },
+    "browser_specific_settings": {
+      "gecko": {
+        "id": "{b97280fa-db1f-454e-83a9-e399f241c7f1}"
+      }
+    }
+  }
+}

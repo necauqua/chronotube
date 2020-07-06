@@ -2,13 +2,42 @@
 <html>
     <head>
         <meta charset="utf-8"/>
+        <style>
+            label {
+                padding-right: 0.5em;
+            }
+            .option {
+                border-left: 2px solid gray;
+                margin-bottom: 1em;
+                padding-left: 0.5em;
+            }
+            .desc {
+                margin-bottom: 0.5em;
+            }
+            .host {
+                margin-top: 0.5em;
+                text-decoration: underline;
+            }
+            #timecode-params {
+                padding-left: 1.25em;
+            }
+            #timecode-params .desc {
+                margin-left: -0.75em;
+            }
+        </style>
     </head>
     <body style="padding-top: 1em">
-        <form>
-            <label style="padding-right: 0.5em">Offset (in seconds):</label>
-            <input type="number" id="offset" value="-1" />
-        </form>
-        <p>This number is added to the number of seconds before it is put into the URL</p>
+        <div class="option">
+            <div class="desc">This number is added to the number of seconds before it is put into the URL</div>
+            <form>
+                <input type="number" id="offset" value="-1" style="width: 50px" />
+                <label for="offset">Offset (in seconds)</label>
+            </form>
+        </div>
+        <div class="option" id="timecode-params">
+            <div class="desc">This option lets you choose the timecode parameter format per site if it supports more than one of them</div>
+        </div>
+        <script src="platforms.js"></script>
         <script src="options.js"></script>
     </body>
 </html>
