@@ -1,6 +1,6 @@
 {
   "name": "chronotube",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "private": true,
   "description": "Automatically updates current YouTube or Twitch VOD URL with the timecode of the playing video",
   "author": "Anton \"necauqua\" Bulakh",
@@ -48,9 +48,28 @@
       "chrome_style": true
     },
     "permissions": [
-      "<all_urls>",
       "storage",
       "history"
+    ],
+    "content_scripts": [
+      {
+        "matches": [
+          "https://www.youtube.com/watch*"
+        ],
+        "js": [
+          "src/platforms.js",
+          "src/foreground.js"
+        ]
+      },
+      {
+        "matches": [
+          "https://www.twitch.tv/videos/*"
+        ],
+        "js": [
+          "src/platforms.js",
+          "src/foreground.js"
+        ]
+      }
     ],
     "background": {
       "scripts": [

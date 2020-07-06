@@ -4,13 +4,3 @@ browser.runtime.onMessage.addListener(message => {
             .catch(console.error);
     }
 });
-Promise.all(Object.values(platforms)
-    .map(({pattern}) =>
-        browser.contentScripts.register({
-            matches: [pattern],
-            js: [
-                {file: 'src/platforms.js'},
-                {file: 'src/foreground.js'},
-            ],
-        })))
-    .catch(console.error);

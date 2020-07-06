@@ -1,6 +1,7 @@
 /**
  ** This file contains all platform-specific configuration required for this addon.
- ** You may add support for another platform by changing this file only.
+ ** You may add support for another platform by changing this file and manifest.
+ ** Don't forget to add the content script to
  **/
 
 /**
@@ -42,9 +43,6 @@ const formatters = {
 /**
  * Set of supported platforms and their configs.
  *
- * `pattern` is the pattern where the content script will be applied, please refer to
- * https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/content_scripts#Matching_URL_patterns
- *
  * `types` is a list of strings which are keys from the formatters object above.
  *
  * `title` is the title of the section at the options page, so if you specify only one type above then you may not use it.
@@ -54,13 +52,11 @@ const formatters = {
 const platforms = {
     'www.youtube.com': {
         title: 'YouTube', // defaults to host itself, e.g. 'www.youtube.com'
-        pattern: 'https://www.youtube.com/watch*',
         types: ['secs', 'hms'], // if more than one then it will be added to config page
         // param: 't', // optional, defaults to 't'
     },
     'www.twitch.tv': {
         title: 'Twitch VOD\'s',
-        pattern: 'https://www.twitch.tv/videos/*',
         types: ['hms', 'secs'],
     },
 }
