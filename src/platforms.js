@@ -1,7 +1,7 @@
 /**
  ** This file contains all platform-specific configuration required for this addon.
  ** You may add support for another platform by changing this file and manifest.
- ** Don't forget to add the content script to
+ ** Don't forget to add the content script to the manifest (in package.json file)
  **/
 
 /**
