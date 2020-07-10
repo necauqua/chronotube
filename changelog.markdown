@@ -5,6 +5,10 @@ The format is based on [Keep a Changelog], and this project adheres to [Semantic
 
 Also, dates in this file are in [Holocene Calendar] because it is amazing, logical and I want more people to know about it.
 
+## [1.3.0] - 12020-07-11
+### Fixed
+ - Changed how the addon handles everything to allow dynamically added video tags - such as when you click on YouTube video in your feed instead of opening it in a new tab, this is a huge fix
+
 ## [1.2.0] - 12020-07-07
 ### Changed
  - Pulled back the 'access your data on all sites' permission requirement, now it asks for these permissions only on supported sites. 

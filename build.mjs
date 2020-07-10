@@ -1,9 +1,8 @@
-import {readdir, readFile, unlink, writeFile} from 'fs/promises';
+import {readdirSync, readFileSync, unlinkSync, writeFileSync} from 'fs';
 import webExt from 'web-ext';
 
-async function withManifest(block) {
-    const buffer = await readFile('package.json');
-    const pkg = JSON.parse(buffer.toString('utf-8'));
+function withManifest(block) {
+    const pkg = JSON.parse(readFileSync('package.json').toString('utf-8'));
 
     const manifest = pkg['web-ext-manifest'];
 
@@ -22,29 +21,25 @@ async function withManifest(block) {
 
     const text = JSON.stringify(manifest, null, 2);
 
-    await writeFile('manifest.json', text);
-    try {
-        await block();
-    } finally {
-        await unlink('manifest.json');
-    }
+    writeFileSync('manifest.json', text);
+    process.on('exit', () => unlinkSync('manifest.json'));
+    return block();
 }
 
 function run() {
     return webExt.default.cmd.run({
-            sourceDir: process.cwd(), // apparently it doesn't like '.', lol
-            artifactsDir: 'dist'
-        }, {shouldExitProgram: false})
-            .then(runner => new Promise(resolve => runner.registerCleanup(resolve)));
+        sourceDir: process.cwd(), // apparently it doesn't like '.', lol
+        artifactsDir: 'dist'
+    }, {shouldExitProgram: false})
+        .then(runner => new Promise(resolve => runner.registerCleanup(resolve)));
 }
 
-async function build() {
-    const files = await readdir('.');
-    await webExt.default.cmd.build({
+function build() {
+    return webExt.default.cmd.build({
         artifactsDir: 'dist',
         sourceDir: '.',
         overwriteDest: true,
-        ignoreFiles: files.filter(it => it !== 'src' && it !== 'manifest.json' && it !== 'LICENSE'),
+        ignoreFiles: readdirSync('.').filter(it => !['src', 'manifest.json', 'LICENSE'].includes(it)),
     }, {shouldExitProgram: false})
 }
 
