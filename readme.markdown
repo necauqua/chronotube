@@ -1,6 +1,8 @@
 # Chronotube
 This addon synces the playing YouTube or Twitch video with the URL, changing the timestamp URL parameter on the fly while the video plays. Does not clutter the history.
 
+[Firefox Addon page](https://addons.mozilla.org/en-US/firefox/addon/chronotube/)
+
 ![](demo.gif)
 
 This is very useful as now you will never lose the spot where you were watching, and eases a litte bookmarking or sharing videos with specific timecodes.
