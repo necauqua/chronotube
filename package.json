@@ -29,7 +29,7 @@
     "build": "node build.mjs"
   },
   "dependencies": {
-    "web-ext": "^7.5.0",
+    "web-ext": "^7.6.2",
     "web-ext-types": "^3.2.1"
   },
   "web-ext-manifest": {
